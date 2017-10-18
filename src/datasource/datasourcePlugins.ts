@@ -1,4 +1,4 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
+﻿/* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
@@ -38,6 +38,14 @@ const initialState: IDatasourcePluginsState = {
     "digimondo-firefly-datasource": {
         id: "digimondo-firefly-datasource",
         url: "./plugins/datasources/digimondoFirefly.js",
+        typeInfo: {
+            type: "will-be-loaded"
+        },
+        isLoading: true
+    },
+    "nestThermostat-data": {
+        id: "nestThermostat-data",
+        url: "./plugins/datasources/nestThermostatDatasource.js",
         typeInfo: {
             type: "will-be-loaded"
         },
