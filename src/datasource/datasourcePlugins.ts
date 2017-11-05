@@ -43,9 +43,9 @@ const initialState: IDatasourcePluginsState = {
         },
         isLoading: true
     },
-    "nestThermostat-data": {
-        id: "nestThermostat-data",
-        url: "./plugins/datasources/nestThermostatDatasource.js",
+    "plasmaticDataSource": {
+        id: "plasmatic-dataSource",
+        url: "./plugins/datasources/plasmaticDataSource.js",
         typeInfo: {
             type: "will-be-loaded"
         },
