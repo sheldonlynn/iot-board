@@ -1,4 +1,4 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
+﻿/* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
@@ -38,6 +38,14 @@ const initialState: IDatasourcePluginsState = {
     "digimondo-firefly-datasource": {
         id: "digimondo-firefly-datasource",
         url: "./plugins/datasources/digimondoFirefly.js",
+        typeInfo: {
+            type: "will-be-loaded"
+        },
+        isLoading: true
+    },
+    "plasmaticDataSource": {
+        id: "plasmatic-dataSource",
+        url: "./plugins/datasources/plasmaticDataSource.js",
         typeInfo: {
             type: "will-be-loaded"
         },

@@ -6,3 +6,4 @@
 # IntelliJ Project Files
 /.idea
 *.iml
+/nbproject/private/
