@@ -4,7 +4,7 @@ var webpackConfig = require('./webpack.config.js')();
 var PROD = (process.env.NODE_ENV === 'production');
 
 webpackConfig.entry = {
-    app: ["./src/app.ts"],
+    app: ["./src/app.tsx"],
     widget: ["./src/widgetApp/widgetApp.ts"],
     datasource: ["./src/datasourceApp/datasourceApp.ts"],
     "browser-tests": ['mocha!./src/browser-tests.ts'],

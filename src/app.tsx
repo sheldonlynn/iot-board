@@ -18,11 +18,16 @@ import * as Renderer from "./renderer.js";
 import * as Store from "./store";
 import * as Persist from "./persistence";
 import Dashboard from "./dashboard";
-import * as $ from 'jquery'
-import * as AppState from './appState'
+import * as $ from 'jquery';
+import * as AppState from './appState';
+import * as ReactDOM from 'react-dom';
+import * as React from 'react';
+import {Provider} from "react-redux";
+import Layout from "./pageLayout";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const loadPredefinedState = $.get('./dashboard.json');
-es6promise.polyfill()
+es6promise.polyfill();
 
 loadPredefinedState.then((data: any) => {
     console.log("Starting dashboard with predefined state");
@@ -47,7 +52,7 @@ function runWithState(configuredState?: AppState.State) {
     let initialState = configuredState;
     let storeOptions = Store.defaultStoreOptions();
     if (!initialState) {
-        initialState = <AppState.State>Persist.loadFromLocalStorage();
+        initialState = Persist.loadFromLocalStorage() as AppState.State;
     } else {
         let devMode = false;
         if (configuredState.config) {
@@ -98,7 +103,7 @@ function runWithState(configuredState?: AppState.State) {
         dashboard.init();
 
         try {
-            renderDashboard(appElement, dashboardStore);
+            render(appElement, dashboardStore);
         }
         catch (error) {
             handleError(dashboard, error)
@@ -107,9 +112,24 @@ function runWithState(configuredState?: AppState.State) {
 
     start();
 
-
     function renderDashboard(element: Element, store: Store.DashboardStore) {
         Renderer.render(element, store);
     }
 
+    function render(element: Element, store: Store.DashboardStore) {
+        ReactDOM.render(
+            <Provider store={store}>
+                <BrowserRouter>
+                    <div>
+                        <Switch>
+                            <Route exact path="/login" render={() => {
+                                return <div>hi</div>
+                            }} />
+                        </Switch>
+                    </div>
+                </BrowserRouter>
+            </Provider>,
+            element);
+        console.log("Render!");
+    }
 }
